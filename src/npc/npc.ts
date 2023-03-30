@@ -45,12 +45,12 @@ export class NPC extends Entity {
    */
   constructor(
     position: TranformConstructorArgs,
-    model: string,
+    model: ObservableComponent,
     onActivate: () => void,
     data?: NPCData
   ) {
     super()
-    this.addComponent(new GLTFShape(model))
+    this.addComponent(model)
     this.addComponent(new Transform(position))
     engine.addEntity(this)
 
@@ -328,7 +328,7 @@ export class NPC extends Entity {
       }
     }
 
-    newAnim.play(true)
+    newAnim.play()
     this.lastPlayedAnim = newAnim
   }
 
